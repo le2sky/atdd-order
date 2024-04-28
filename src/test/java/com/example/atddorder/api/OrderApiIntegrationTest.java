@@ -38,7 +38,8 @@ class OrderApiIntegrationTest {
                 .getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
-        PendingOrderResponse pendingOrderResponse = objectMapper.readValue(response.getContentAsString(), PendingOrderResponse.class);
+        PendingOrderResponse pendingOrderResponse =
+                objectMapper.readValue(response.getContentAsString(), PendingOrderResponse.class);
         assertThat(pendingOrderResponse.getId()).isGreaterThan(0);
     }
 }

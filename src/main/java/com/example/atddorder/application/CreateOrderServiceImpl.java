@@ -2,11 +2,16 @@ package com.example.atddorder.application;
 
 import com.example.atddorder.domain.PendingOrder;
 import com.example.atddorder.domain.PendingOrderRepository;
-import com.example.atddorder.infra.PendingOrderRepositoryMemoryImple;
+import org.springframework.stereotype.Service;
 
+@Service
 class CreateOrderServiceImpl implements CreateOrderService {
 
-    private PendingOrderRepository pendingOrderRepository = new PendingOrderRepositoryMemoryImple();
+    private final PendingOrderRepository pendingOrderRepository;
+
+    public CreateOrderServiceImpl(PendingOrderRepository pendingOrderRepository) {
+        this.pendingOrderRepository = pendingOrderRepository;
+    }
 
     @Override
     public PendingOrder createPendingOrder(PendingOrderRequest request) {
